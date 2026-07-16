@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+header p {
+  color: #6e6e73;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+}
+
+aside section,
+.chat {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+aside section + section {
+  margin-top: 1rem;
+}
+
+h2 {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.status {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: #6e6e73;
+}
+
+.documents ul {
+  list-style: none;
+  padding: 0;
+}
+
+.documents li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.documents button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #d70015;
+  font-size: 1.1rem;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.hint {
+  color: #6e6e73;
+}
+
+.message {
+  max-width: 85%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #0071e3;
+  color: #fff;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: #f0f0f2;
+}
+
+.message details {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #6e6e73;
+}
+
+.chat form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.chat button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #0071e3;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chat button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
