@@ -26,6 +26,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="RAG Starter", lifespan=lifespan)
 
 # CORS: erlaubt Zugriff vom Vite-Dev-Server (Port 5173)
+#middleware:    pipeline die vor und nach jedem request durchlaufen wird:
+                    #ist der Port für mich freigegeben? nein? dann höre auf -- 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
