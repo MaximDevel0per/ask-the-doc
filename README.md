@@ -1,4 +1,4 @@
-# RAG Starter – Chat mit deinen Dokumenten
+# Ask The Doc – Chat mit deinen Dokumenten
 
 Ein RAG-Projekt (Retrieval-Augmented Generation) als Lern- und Portfolio-Projekt:
 Dokumente (PDF/TXT/MD) hochladen und Fragen zu deren Inhalt stellen.
