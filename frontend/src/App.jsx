@@ -18,7 +18,7 @@ export default function App() {
   return (
     <div className="app">
       <header>
-        <h1>RAG Starter</h1>
+        <h1>Ask The Doc</h1>
         <p>Lade Dokumente hoch und stelle Fragen zu deren Inhalt.</p>
       </header>
       <div className="layout">
