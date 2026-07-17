@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+# Backend-Wurzel auf den Importpfad legen, damit `import app...` in den
+# Tests funktioniert (pytest wird aus backend/ heraus aufgerufen).
+pythonpath = ["."]
+testpaths = ["tests"]
