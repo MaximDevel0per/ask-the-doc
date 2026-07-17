@@ -9,7 +9,7 @@ import functools
 from google import genai
 from google.genai import types
 
-from app import config
+from app import config #zugriff auf .env variablen
 
 
 @functools.cache
