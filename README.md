@@ -11,6 +11,7 @@ Dokumente (PDF/TXT/MD) hochladen und Fragen zu deren Inhalt stellen.
 Upload:  Datei → Text extrahieren → Chunks → Embeddings → pgvector
 Frage:   Frage → Embedding → ähnlichste Chunks suchen → LLM antwortet mit Kontext + Quellen
 ```
+<img width="1313" height="1083" alt="image" src="https://github.com/user-attachments/assets/4ca3c3ca-a432-4499-89c8-dfa3f7960566" />
 
 | Datei | Verantwortung |
 |---|---|
