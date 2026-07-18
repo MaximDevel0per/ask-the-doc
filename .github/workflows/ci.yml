@@ -33,48 +33,9 @@ jobs:
           npm install
           npm run build
 
-  # Baut das Backend-Image und laedt es in die GitHub Container Registry (ghcr.io).
-  # Bei Pull Requests wird nur gebaut -- dient dann als Smoke-Test fuer das Dockerfile.
   docker-build:
     runs-on: ubuntu-latest
-
-    # Der GITHUB_TOKEN darf standardmaessig nur lesen.
-    # Ohne "packages: write" scheitert der Push mit "denied".
-    permissions:
-      contents: read
-      packages: write
-
-    env:
-      # Aufbau: registry / owner / name -- ghcr.io verlangt Kleinschreibung
-      IMAGE: ghcr.io/maximdevel0per/ask-the-doc-backend
-
     steps:
-      # Die VM startet leer: erst der Checkout bringt Dockerfile und Code hinein
       - uses: actions/checkout@v4
-
-      # Anmeldung nur, wenn auch wirklich gepusht wird.
-      # GITHUB_TOKEN stellt GitHub pro Lauf automatisch bereit (kein eigenes Secret noetig).
-      - name: Log in to GitHub Container Registry
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      # Baut aus backend/Dockerfile und pusht in einem Schritt
-      - name: Build and push backend image
-        uses: docker/build-push-action@v6
-        with:
-          # Build-Kontext: nur Dateien unter ./backend sind fuer COPY sichtbar
-          context: ./backend
-
-          # Nur von main pushen -- sonst koennte jeder PR das :latest ueberschreiben
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-
-          # Ein Build, zwei Namen fuer dasselbe Image:
-          #   :<sha>   fester Zeiger auf diesen Commit -- zum Deployen und fuer Rollbacks
-          #   :latest  beweglich, nur zur Bequemlichkeit
-          tags: |
-            ${{ env.IMAGE }}:${{ github.sha }}
-            ${{ env.IMAGE }}:latest
+      - name: Build backend image
+        run: docker build ./backend -t rag-starter-backend
